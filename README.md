@@ -11,5 +11,8 @@ brew install <FORMULA>
 
 ## Formulae
 
-| Repository | Formula | Description |
-| ---------- | ------- | ----------- |
+<!-- FORMULAE -->
+| Repository | Formula | Version | Description |
+| ---------- | ------- | ------- | ----------- |
+<!-- /FORMULAE -->
+
