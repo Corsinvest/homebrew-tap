@@ -1,0 +1,47 @@
+name: Update Formulae Table
+
+on:
+  push:
+    paths:
+      - 'Formula/**.rb'
+  workflow_dispatch:
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate Formulae table
+        id: generate
+        run: |
+          ROWS=""
+          for rb in Formula/*.rb; do
+            [ -f "$rb" ] || continue
+            name=$(basename "$rb" .rb)
+            desc=$(grep -m1 '^\s*desc ' "$rb" | sed 's/.*desc[[:space:]]*"//;s/"[[:space:]]*$//')
+            homepage=$(grep -m1 '^\s*homepage ' "$rb" | sed 's/.*homepage[[:space:]]*"//;s/"[[:space:]]*$//')
+            version=$(grep -m1 '^\s*version ' "$rb" | sed 's/.*version[[:space:]]*"//;s/"[[:space:]]*$//')
+            ROWS="${ROWS}| [$name]($homepage) | \`$name\` | $version | $desc |\n"
+          done
+          echo "rows<<EOF" >> $GITHUB_OUTPUT
+          printf "$ROWS" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Update README
+        run: |
+          ROWS="${{ steps.generate.outputs.rows }}"
+          TABLE="<!-- FORMULAE -->\n| Repository | Formula | Version | Description |\n| ---------- | ------- | ------- | ----------- |\n${ROWS}<!-- /FORMULAE -->"
+          perl -i -0777 -pe "s|<!-- FORMULAE -->.*?<!-- /FORMULAE -->|${TABLE}|s" README.md
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git diff --cached --quiet && echo "No changes" || git commit -m "docs: update Formulae table"
+          git push
+
