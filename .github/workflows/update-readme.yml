@@ -15,33 +15,41 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Generate Formulae table
-        id: generate
+      - name: Generate Formulae table and update README
         run: |
-          ROWS=""
-          for rb in Formula/*.rb; do
-            [ -f "$rb" ] || continue
-            name=$(basename "$rb" .rb)
-            desc=$(grep -m1 '^\s*desc ' "$rb" | sed 's/.*desc[[:space:]]*"//;s/"[[:space:]]*$//')
-            homepage=$(grep -m1 '^\s*homepage ' "$rb" | sed 's/.*homepage[[:space:]]*"//;s/"[[:space:]]*$//')
-            version=$(grep -m1 '^\s*version ' "$rb" | sed 's/.*version[[:space:]]*"//;s/"[[:space:]]*$//')
-            ROWS="${ROWS}| [$name]($homepage) | \`$name\` | $version | $desc |\n"
-          done
-          echo "rows<<EOF" >> $GITHUB_OUTPUT
-          printf "$ROWS" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
+          python3 << 'PYEOF'
+          import re, os, glob
 
-      - name: Update README
-        run: |
-          ROWS="${{ steps.generate.outputs.rows }}"
-          TABLE="<!-- FORMULAE -->\n| Repository | Formula | Version | Description |\n| ---------- | ------- | ------- | ----------- |\n${ROWS}<!-- /FORMULAE -->"
-          perl -i -0777 -pe "s|<!-- FORMULAE -->.*?<!-- /FORMULAE -->|${TABLE}|s" README.md
+          rows = []
+          for rb in sorted(glob.glob("Formula/*.rb")):
+              name = os.path.basename(rb).replace(".rb", "")
+              content = open(rb).read()
+              desc    = re.search(r'^\s*desc\s+"(.+?)"', content, re.M)
+              homepage= re.search(r'^\s*homepage\s+"(.+?)"', content, re.M)
+              version = re.search(r'^\s*version\s+"(.+?)"', content, re.M)
+              desc    = desc.group(1)    if desc    else ""
+              homepage= homepage.group(1)if homepage else ""
+              version = version.group(1) if version else ""
+              rows.append(f"| [{name}]({homepage}) | `{name}` | {version} | {desc} |")
+
+          table = "\n".join([
+              "<!-- FORMULAE -->",
+              "| Repository | Formula | Version | Description |",
+              "| ---------- | ------- | ------- | ----------- |",
+              *rows,
+              "<!-- /FORMULAE -->",
+          ])
+
+          readme = open("README.md").read()
+          updated = re.sub(r"<!-- FORMULAE -->.*?<!-- /FORMULAE -->", table, readme, flags=re.DOTALL)
+          open("README.md", "w").write(updated)
+          print("Table updated.")
+          PYEOF
 
       - name: Commit if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add README.md
-          git diff --cached --quiet && echo "No changes" || git commit -m "docs: update Formulae table"
-          git push
+          git diff --cached --quiet && echo "No changes" || (git commit -m "docs: update Formulae table" && git push)
 
