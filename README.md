@@ -14,5 +14,6 @@ brew install <FORMULA>
 <!-- FORMULAE -->
 | Repository | Formula | Version | Description |
 | ---------- | ------- | ------- | ----------- |
+| [cv4pve-diag](https://github.com/Corsinvest/cv4pve-diag) | `cv4pve-diag` | 2.1.0 | Diagnostic Tool for Proxmox VE |
 <!-- /FORMULAE -->
 
