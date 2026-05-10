@@ -1,17 +1,17 @@
 class Cv4pveReport < Formula
   desc "Report tool for Proxmox VE — exports full infrastructure inventory to Excel"
   homepage "https://github.com/Corsinvest/cv4pve-report"
-  version "2.0.1"
+  version "2.1.0"
   license "GPL-3.0"
 
   on_macos do
     on_intel do
-      url "https://github.com/Corsinvest/cv4pve-report/releases/download/v2.0.1/cv4pve-report-osx-x64.zip"
-      sha256 "aa551c9e9c64fb0e96c6db2880bf75285a16a932517b26ffa58726605820f0fa"
+      url "https://github.com/Corsinvest/cv4pve-report/releases/download/v2.1.0/cv4pve-report-osx-x64.zip"
+      sha256 "a95b98fe012ad7ebf5a86ecf7998e0e9268ae4d1fdb3645030651f31fe3dd289"
     end
     on_arm do
-      url "https://github.com/Corsinvest/cv4pve-report/releases/download/v2.0.1/cv4pve-report-osx-arm64.zip"
-      sha256 "b58ac536da073746f11e266d1c6cbc7d5ec6d8ac7acc9c9451072aa1c3b4c12b"
+      url "https://github.com/Corsinvest/cv4pve-report/releases/download/v2.1.0/cv4pve-report-osx-arm64.zip"
+      sha256 "f739292d65b73f0542890a954a8ff7585679b203b505c24234bc032c6fe216ab"
     end
   end
 
