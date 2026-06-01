@@ -20,6 +20,6 @@ brew install <FORMULA>
 | [cv4pve-metrics-exporter](https://github.com/Corsinvest/cv4pve-metrics-exporter) | `cv4pve-metrics-exporter` | 2.0.0 | Metrics exporter for Proxmox VE |
 | [cv4pve-node-protect](https://github.com/Corsinvest/cv4pve-node-protect) | `cv4pve-node-protect` | 2.1.1 | Backup Proxmox VE node configuration files via SSH |
 | [cv4pve-pepper](https://github.com/Corsinvest/cv4pve-pepper) | `cv4pve-pepper` | 2.0.0 | SPICE/VNC console launcher for Proxmox VE — connect to VMs with a single command |
-| [cv4pve-report](https://github.com/Corsinvest/cv4pve-report) | `cv4pve-report` | 2.5.0 | Report tool for Proxmox VE — exports full infrastructure inventory to Excel, HTML or JSON |
+| [cv4pve-report](https://github.com/Corsinvest/cv4pve-report) | `cv4pve-report` | 2.5.1 | Report tool for Proxmox VE — exports full infrastructure inventory to Excel, HTML or JSON |
 <!-- /FORMULAE -->
 
