@@ -1,17 +1,17 @@
 class Cv4pveMetricsExporter < Formula
   desc "Metrics exporter for Proxmox VE"
   homepage "https://github.com/Corsinvest/cv4pve-metrics-exporter"
-  version "2.0.0"
+  version "2.1.0"
   license "GPL-3.0"
 
   on_macos do
     on_intel do
-      url "https://github.com/Corsinvest/cv4pve-metrics-exporter/releases/download/v2.0.0/cv4pve-metrics-exporter-osx-x64.zip"
-      sha256 "e4f15bc076acfcf89af7850c1c4efc8de551631304f43c3b96c3a36b400e1f6e"
+      url "https://github.com/Corsinvest/cv4pve-metrics-exporter/releases/download/v2.1.0/cv4pve-metrics-exporter-osx-x64.zip"
+      sha256 "eddc377076d9483ba4ae1f28bad6e4cdec729123c000988d869be27229f8ac8c"
     end
     on_arm do
-      url "https://github.com/Corsinvest/cv4pve-metrics-exporter/releases/download/v2.0.0/cv4pve-metrics-exporter-osx-arm64.zip"
-      sha256 "db7a74987f64122d71b23ab7b60d4458e69c958218f8759aa17d2dc976825a90"
+      url "https://github.com/Corsinvest/cv4pve-metrics-exporter/releases/download/v2.1.0/cv4pve-metrics-exporter-osx-arm64.zip"
+      sha256 "7b330227dcfb0b6591b649ee464d2f2c942ef81094d1a0775a1965e9fae6be8a"
     end
   end
 
