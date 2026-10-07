@@ -1,17 +1,17 @@
 class Cv4pveDiag < Formula
-  desc "Diagnostic tool for Proxmox VE — checks nodes, VMs, LXC containers and storage for common issues"
+  desc "Diagnostic tool for Proxmox VE: checks nodes, VMs, LXC containers and storage for common issues"
   homepage "https://github.com/Corsinvest/cv4pve-diag"
-  version "2.7.0"
+  version "2.8.0"
   license "GPL-3.0"
 
   on_macos do
     on_intel do
-      url "https://github.com/Corsinvest/cv4pve-diag/releases/download/v2.7.0/cv4pve-diag-osx-x64.zip"
-      sha256 "bdb997154de60ae4e9a64e64d7ba4b9caa26aef78c64818c00b596080ead4413"
+      url "https://github.com/Corsinvest/cv4pve-diag/releases/download/v2.8.0/cv4pve-diag-osx-x64.zip"
+      sha256 "e8c00f0d3747034f8a05293c6ebe28f0fb2a31831d993abaa2bca528be4960a6"
     end
     on_arm do
-      url "https://github.com/Corsinvest/cv4pve-diag/releases/download/v2.7.0/cv4pve-diag-osx-arm64.zip"
-      sha256 "65f2805b8f9a8c2cd21cce414010d9b6e4ade504788d3fe8eedf5cc4755961c7"
+      url "https://github.com/Corsinvest/cv4pve-diag/releases/download/v2.8.0/cv4pve-diag-osx-arm64.zip"
+      sha256 "af3855800fdc3237ded1c9b7844bf37cbf382f4bc9a26116adf86b1edfebbf9e"
     end
   end
 
