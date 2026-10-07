@@ -17,7 +17,7 @@ brew install <FORMULA>
 | [cv4pve-autosnap](https://github.com/Corsinvest/cv4pve-autosnap) | `cv4pve-autosnap` | 2.2.1 | Automatic snapshot tool for Proxmox VE: schedule and manage VM/LXC snapshots with retention policies |
 | [cv4pve-botgram](https://github.com/Corsinvest/cv4pve-botgram) | `cv4pve-botgram` | 2.0.0 | Telegram bot for Proxmox VE: manage and monitor your cluster via Telegram |
 | [cv4pve-cli](https://github.com/Corsinvest/cv4pve-cli) | `cv4pve-cli` | 2.4.0 | Command-line interface for Proxmox VE: manage API calls, contexts and aliases |
-| [cv4pve-diag](https://github.com/Corsinvest/cv4pve-diag) | `cv4pve-diag` | 2.7.0 | Diagnostic tool for Proxmox VE — checks nodes, VMs, LXC containers and storage for common issues |
+| [cv4pve-diag](https://github.com/Corsinvest/cv4pve-diag) | `cv4pve-diag` | 2.8.0 | Diagnostic tool for Proxmox VE: checks nodes, VMs, LXC containers and storage for common issues |
 | [cv4pve-metrics-exporter](https://github.com/Corsinvest/cv4pve-metrics-exporter) | `cv4pve-metrics-exporter` | 2.1.0 | Metrics exporter for Proxmox VE |
 | [cv4pve-node-protect](https://github.com/Corsinvest/cv4pve-node-protect) | `cv4pve-node-protect` | 2.2.0 | Backup Proxmox VE node configuration files via SSH |
 | [cv4pve-pepper](https://github.com/Corsinvest/cv4pve-pepper) | `cv4pve-pepper` | 2.0.1 | SPICE/VNC console launcher for Proxmox VE — connect to VMs with a single command |
